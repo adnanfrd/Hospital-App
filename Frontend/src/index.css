@@ -1,0 +1,398 @@
+body{
+  background-color: #F5EEE6;
+}
+.container {
+  max-width: 90vw;
+  margin: 0 auto;
+  padding: 20px 150px;
+  background-color: #F5EEE6;
+}
+
+nav {
+  background-color: #00a7aa;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+}
+
+li {
+  margin-right: 20px;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+}
+
+a:hover {
+  color: #ffd700;
+}
+
+.active {
+  color: #ffd700;
+}
+
+/* FLEX */
+.flex-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-row {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* /src/components/App */
+/* Appointment card */
+.appointment-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  width: 300px;
+  padding: 16px;
+  margin: 16px 0;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+}
+
+.appointment-card:hover {
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+.appointment-card p {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.appointment-card p span {
+  font-weight: 900;
+}
+
+.appointment-card button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  margin-right: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.appointment-card button:hover {
+  background-color: #002e5f;
+}
+
+/* Add this to a new CSS file, e.g., AppointmentForm.css */
+.appointment-form {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.appointment-form h4 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.appointment-form label {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.appointment-form input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 16px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.appointment-form button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.appointment-form button:hover {
+  background-color: #0056b3;
+}
+
+.appointments {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  width: 30vw;
+}
+
+.add-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 250px;
+}
+
+/* //Doctors.css */
+.main-doc-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin-top: 40px;
+}
+
+.doctors-section {
+  width: 45%;
+  height: 100vh;
+  text-align: center;
+  margin-left: 16px; /* Added margin for spacing */
+}
+
+/* Add the doctor card styles */
+.doctor-card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 16px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+}
+
+.doctor-card:hover {
+  transform: scale(1.02);
+}
+
+.doctor-card p {
+  margin: 0;
+}
+
+.doctor-card button {
+  margin-top: 8px;
+  cursor: pointer;
+}
+
+/* Add the form section styles */
+.form-sections {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 16px;
+  width: 45%;
+  margin-bottom: 306px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.form-sections h4 {
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.form-sections form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-sections label {
+  margin-bottom: 8px;
+}
+
+.form-sections input {
+  padding: 8px;
+  margin-bottom: 16px;
+}
+
+.form-sections button {
+  align-self: flex-start;
+  padding: 8px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.form-sections button:hover {
+  background-color: #0056b3;
+}
+
+button {
+  margin-top: 8px;
+  cursor: pointer;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 8px;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+.btn-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+/* Patients.css */
+
+.patient-main {
+  display: flex;
+  margin-top: 40px;
+
+}
+
+.form-sections {
+  width: 45%;
+  margin-right: 20px;
+  height: 400px;
+}
+
+.patients-section {
+  width: 45%;
+}
+
+.patient-card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 16px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+}
+
+.patient-card:hover {
+  transform: scale(1.02);
+}
+
+.patient-card h4 {
+  margin-bottom: 8px;
+}
+
+.patient-card p {
+  margin: 8px 0;
+}
+
+.patient-card button {
+  margin-top: 8px;
+  cursor: pointer;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 8px;
+}
+
+.patient-card button:hover {
+  background-color: #0056b3;
+}
+/* For screens with max-width 425px */
+@media (max-width: 425px) {
+  .container {
+    padding: 10px;
+  }
+
+  nav {
+    padding: 5px;
+  }
+
+  ul {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  li {
+    margin-bottom: 10px;
+  }
+
+  .appointment-card, .appointment-form, .doctor-card, .patient-card, .form-sections {
+    width: 100%;
+    margin: 10px 0;
+  }
+
+  .appointments {
+    width: 100%;
+  }
+
+  .main-doc-container {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .doctors-section, .patients-section {
+    width: 100%;
+  }
+
+  .btn-container {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+/* For screens with max-width 375px */
+@media (max-width: 375px) {
+  .container {
+    padding: 5px;
+    margin: 5px;
+  }
+
+  nav {
+    padding: 3px;
+  }
+
+  ul {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  li {
+    margin-bottom: 8px;
+  }
+
+  .appointment-card, .appointment-form, .doctor-card, .patient-card, .form-sections {
+    width: 100%;
+    margin: 8px 0;
+  }
+
+  .appointments {
+    width: 100%;
+  }
+
+  .main-doc-container {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .doctors-section, .patients-section {
+    width: 100%;
+  }
+
+  .btn-container {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
