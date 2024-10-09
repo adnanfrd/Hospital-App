@@ -6,6 +6,7 @@ const DoctorCard = ({ doctor, onEdit, onDelete }) => {
             <p>
                 {doctor.name} - {doctor.specialty}
             </p>
+            
             <div className="btn-container">
                 <button onClick={() => onEdit(doctor)}>Edit</button>
                 <button onClick={() => onDelete(doctor._id)}>Delete</button>
