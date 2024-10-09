@@ -6,7 +6,7 @@ const appointmentSchema = new Schema({
     date: { type: Date, required: true },
     // Add more fields as needed
 }, {
-    timestamps: true // Automatically adds createdAt and updatedAt fields
+    timestamps: true 
 });
 
 const Appointment = model('Appointment', appointmentSchema);
