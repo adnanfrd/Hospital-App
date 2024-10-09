@@ -4,7 +4,6 @@ const appointmentSchema = new Schema({
     patientName: { type: String, required: true },
     doctorName: { type: String, required: true },
     date: { type: Date, required: true },
-    // Add more fields as needed
 }, {
     timestamps: true 
 });
