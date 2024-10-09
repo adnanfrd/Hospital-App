@@ -5,7 +5,7 @@ const doctorSchema = new Schema({
     specialty: { type: String, required: true },
     // Add more fields as needed
 }, {
-    timestamps: true // Automatically adds createdAt and updatedAt fields
+    timestamps: true 
 });
 
 const Doctor = model('Doctor', doctorSchema);
