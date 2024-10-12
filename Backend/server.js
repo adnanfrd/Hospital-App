@@ -10,10 +10,22 @@ import appointmentsRouter from './routes/appointments.js';
 const app = express();
 const PORT = process.env.PORT || 6000;
 
+const allowedOrigins = [
+    'http://localhost:5174',  
+    'https://adnan-hospital-app.vercel.app'  
+];
+
 app.use(cors({
-    origin: 'https://adnan-hospital-app.vercel.app'  
+    origin: (origin, callback) => {
+        if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
+            callback(null, origin); 
+        } else {
+            callback(new Error('Not allowed by CORS')); 
+        }
+    }
 }));
-app.use(express.json()); 
+
+app.use(express.json());
 
 mongoose.connect(process.env.DB_URL).then(() => {
     console.log('MongoDB database connection established successfully');
