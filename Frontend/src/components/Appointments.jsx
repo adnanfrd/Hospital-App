@@ -13,16 +13,16 @@ const Appointments = () => {
     });
     const [selectedAppointment, setSelectedAppointment] = useState(null);
     const [isEditMode, setIsEditMode] = useState(false);
-
+      const apiURL = 'http://localhost:5000/appointments';
     useEffect(() => {
-        axios.get('http://localhost:5000/appointments')
+        axios.get(apiURL)
             .then(response => setAppointments(response.data))
             .catch(error => console.error('Error fetching appointments:', error));
     }, []);
 
     const handleAddAppointment = (e) => {
         e.preventDefault();
-        axios.post('http://localhost:5000/appointments/add', newAppointment)
+        axios.post(`${apiURL}/add`, newAppointment)
             .then(response => {
                 setAppointments([...appointments, response.data]);
                 setNewAppointment({
@@ -36,7 +36,7 @@ const Appointments = () => {
 
     const handleUpdateAppointment = (id, e) => {
         e.preventDefault();
-        axios.put(`http://localhost:5000/appointments/update/${id}`, selectedAppointment)
+        axios.put(`${apiURL}/update/${id}`, selectedAppointment)
             .then(response => {
                 const updatedAppointment = { ...selectedAppointment, _id: id };
                 setAppointments(appointments.map(
@@ -49,7 +49,7 @@ const Appointments = () => {
     };
 
     const handleDeleteAppointment = (id) => {
-        axios.delete(`http://localhost:5000/appointments/delete/${id}`)
+        axios.delete(`${apiURL}/delete/${id}`)
             .then(response => {
                 setAppointments(appointments.filter(appointment => appointment._id !== id));
             })
