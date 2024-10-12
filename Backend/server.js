@@ -22,16 +22,19 @@ app.use(cors({
         } else {
             callback(new Error('Not allowed by CORS')); 
         }
-    }
+    },
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE", 
 }));
 
 app.use(express.json());
 
-mongoose.connect(process.env.DB_URL).then(() => {
-    console.log('MongoDB database connection established successfully');
-}).catch((err) => {
-    console.error('MongoDB connection error:', err);
-});
+mongoose.connect(process.env.DB_URL)
+    .then(() => {
+        console.log('MongoDB database connection established successfully');
+    })
+    .catch((err) => {
+        console.error('MongoDB connection error:', err);
+    });
 
 app.use('/patients', patientsRouter);
 app.use('/doctors', doctorsRouter);
