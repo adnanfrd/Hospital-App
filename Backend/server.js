@@ -11,8 +11,8 @@ const app = express();
 const PORT = process.env.PORT || 6000;
 
 app.use(cors({
-    origin: 'http://localhost:5174.vercel.app'  
-  }));
+    origin: 'https://adnan-hospital-app.vercel.app'  
+}));
 app.use(express.json()); 
 
 mongoose.connect(process.env.DB_URL).then(() => {
