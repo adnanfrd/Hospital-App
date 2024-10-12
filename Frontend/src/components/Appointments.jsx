@@ -15,7 +15,7 @@ const Appointments = () => {
     const [isEditMode, setIsEditMode] = useState(false);
 
     useEffect(() => {
-        axios.get(`${window.location.origin}/appointments`)
+        axios.get('http://localhost:5000/appointments')
             .then(response => setAppointments(response.data))
             .catch(error => console.error('Error fetching appointments:', error));
     }, []);
