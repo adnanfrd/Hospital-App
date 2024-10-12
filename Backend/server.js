@@ -11,8 +11,8 @@ const app = express();
 const PORT = process.env.PORT || 6000;
 
 const allowedOrigins = [
-    'http://localhost:5174', 
-    'https://hospital-kmkm4onlh-muhammad-adnan-fareeds-projects-b9c0d141.vercel.app' 
+    'http://localhost:5174',  
+    'https://adnan-hospital-app.vercel.app'  
 ];
 
 app.use(cors({
@@ -22,9 +22,9 @@ app.use(cors({
         } else {
             callback(new Error('Not allowed by CORS')); 
         }
-    }
+    },
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE", 
 }));
-
 
 app.use(express.json());
 
