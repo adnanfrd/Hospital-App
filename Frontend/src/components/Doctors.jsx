@@ -109,7 +109,7 @@ const Doctors = () => {
                 <div className="doctor-list">
                     {doctors.map((doctor) => (
                         <DoctorCard
-                            key={doctor._id} // Ensures unique key for each DoctorCard
+                            key={doctor._id} 
                             doctor={doctor}
                             onEdit={handleEditDoctor}
                             onDelete={handleDeleteDoctor}
