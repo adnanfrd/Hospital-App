@@ -36,7 +36,7 @@ const Appointments = () => {
 
     const handleUpdateAppointment = (id, e) => {
         e.preventDefault();
-        axios.post(`http://localhost:5000/appointments/update/${id}`, selectedAppointment)
+        axios.put(`http://localhost:5000/appointments/update/${id}`, selectedAppointment)
             .then(response => {
                 const updatedAppointment = { ...selectedAppointment, _id: id };
                 setAppointments(appointments.map(

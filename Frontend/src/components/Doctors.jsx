@@ -1,9 +1,6 @@
-// src/components/Doctors.jsx
-
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import DoctorCard from './DoctorCard';
-// import './Doctors.css';
 
 const Doctors = () => {
     const [doctors, setDoctors] = useState([]);
@@ -37,8 +34,10 @@ const Doctors = () => {
 
     const handleUpdateDoctor = async (e) => {
         e.preventDefault();
+        if (!selectedDoctor) return;
+
         try {
-            const response = await axios.patch(`http://localhost:5000/doctors/update/${selectedDoctor._id}`, selectedDoctor);
+            const response = await axios.put(`http://localhost:5000/doctors/update/${selectedDoctor._id}`, selectedDoctor);
             setDoctors((prevDoctors) =>
                 prevDoctors.map((doctor) =>
                     doctor._id === selectedDoctor._id ? response.data : doctor
@@ -70,13 +69,15 @@ const Doctors = () => {
             <div className="form-sections">
                 <h4>{isEditMode ? 'Edit Doctor' : 'Add New Doctor'}</h4>
                 <form onSubmit={isEditMode ? handleUpdateDoctor : handleAddDoctor}>
-                    <label>Name:</label>
+                    <label htmlFor="name">Name:</label>
                     <input
                         type="text"
-                        value={isEditMode ? selectedDoctor.name : newDoctor.name}
+                        id="name"
+                        name="name"
+                        value={isEditMode && selectedDoctor ? selectedDoctor.name : newDoctor.name}
                         onChange={(e) => {
                             const value = e.target.value;
-                            if (isEditMode) {
+                            if (isEditMode && selectedDoctor) {
                                 setSelectedDoctor((prev) => ({ ...prev, name: value }));
                             } else {
                                 setNewDoctor((prev) => ({ ...prev, name: value }));
@@ -84,13 +85,15 @@ const Doctors = () => {
                         }}
                     />
                     <br />
-                    <label>Specialty:</label>
+                    <label htmlFor="specialty">Specialty:</label>
                     <input
                         type="text"
-                        value={isEditMode ? selectedDoctor.specialty : newDoctor.specialty}
+                        id="specialty"
+                        name="specialty"
+                        value={isEditMode && selectedDoctor ? selectedDoctor.specialty : newDoctor.specialty}
                         onChange={(e) => {
                             const value = e.target.value;
-                            if (isEditMode) {
+                            if (isEditMode && selectedDoctor) {
                                 setSelectedDoctor((prev) => ({ ...prev, specialty: value }));
                             } else {
                                 setNewDoctor((prev) => ({ ...prev, specialty: value }));
@@ -106,7 +109,7 @@ const Doctors = () => {
                 <div className="doctor-list">
                     {doctors.map((doctor) => (
                         <DoctorCard
-                            key={doctor._id}
+                            key={doctor._id} // Ensures unique key for each DoctorCard
                             doctor={doctor}
                             onEdit={handleEditDoctor}
                             onDelete={handleDeleteDoctor}

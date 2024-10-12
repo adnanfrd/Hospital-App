@@ -18,7 +18,6 @@ const Patients = () => {
         e.preventDefault();
         axios.post('http://localhost:5000/patients/add', newPatient)
             .then(response => {
-                console.log(response.data);
                 setPatients([...patients, response.data]);
                 setNewPatient({ name: '', age: '', gender: '' });
             })
@@ -27,13 +26,14 @@ const Patients = () => {
 
     const handleUpdatePatient = (id, e) => {
         e.preventDefault();
-        axios.post(`http://localhost:5000/patients/update/${id}`, selectedPatient)
+        axios.put(`http://localhost:5000/patients/update/${id}`, selectedPatient)
             .then(response => {
                 const updatedPatient = { ...selectedPatient, _id: id };
-                console.log('Updated patient', updatedPatient);
-                setPatients(patients.map(patient => patient._id === id ? updatedPatient : patient));
+                setPatients(patients.map(
+                    patient => patient._id === id ? updatedPatient : patient
+                ));
                 setSelectedPatient(null);
-                setIsEditMode(false); // Switch back to Add mode
+                setIsEditMode(false);
             })
             .catch(error => console.error('Error updating patient:', error));
     };
@@ -41,7 +41,6 @@ const Patients = () => {
     const handleDeletePatient = (id) => {
         axios.delete(`http://localhost:5000/patients/delete/${id}`)
             .then(response => {
-                console.log(response.data);
                 setPatients(patients.filter(patient => patient._id !== id));
             })
             .catch(error => console.error('Error deleting patient:', error));
@@ -49,7 +48,7 @@ const Patients = () => {
 
     const handleEditPatient = (patient) => {
         setSelectedPatient(patient);
-        setIsEditMode(true); // Switch to Edit mode
+        setIsEditMode(true);
     };
 
     return (
@@ -59,27 +58,33 @@ const Patients = () => {
                     {isEditMode ? 'Edit Patient' : 'Add New Patient'}
                 </h4>
                 <form onSubmit={isEditMode ? (e) => handleUpdatePatient(selectedPatient._id, e) : handleAddPatient}>
-                    <label>Name: </label>
+                    <label htmlFor="name">Name: </label>
                     <input
                         type="text"
+                        id="name"
+                        name="name"
                         value={isEditMode ? selectedPatient.name : newPatient.name}
                         onChange={(e) => isEditMode
                             ? setSelectedPatient({ ...selectedPatient, name: e.target.value })
                             : setNewPatient({ ...newPatient, name: e.target.value })}
                     />
                     <br />
-                    <label>Age: </label>
+                    <label htmlFor="age">Age: </label>
                     <input
                         type="text"
+                        id="age"
+                        name="age"
                         value={isEditMode ? selectedPatient.age : newPatient.age}
                         onChange={(e) => isEditMode
                             ? setSelectedPatient({ ...selectedPatient, age: e.target.value })
                             : setNewPatient({ ...newPatient, age: e.target.value })}
                     />
                     <br />
-                    <label>Gender: </label>
+                    <label htmlFor="gender">Gender: </label>
                     <input
                         type="text"
+                        id="gender"
+                        name="gender"
                         value={isEditMode ? selectedPatient.gender : newPatient.gender}
                         onChange={(e) => isEditMode
                             ? setSelectedPatient({ ...selectedPatient, gender: e.target.value })
