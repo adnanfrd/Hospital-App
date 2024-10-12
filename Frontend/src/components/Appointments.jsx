@@ -13,16 +13,16 @@ const Appointments = () => {
     });
     const [selectedAppointment, setSelectedAppointment] = useState(null);
     const [isEditMode, setIsEditMode] = useState(false);
-      
+
     useEffect(() => {
-        axios.get(`${window.location.origin}/appointments`)
+        axios.get('http://localhost:5000/appointments')
             .then(response => setAppointments(response.data))
             .catch(error => console.error('Error fetching appointments:', error));
     }, []);
 
     const handleAddAppointment = (e) => {
         e.preventDefault();
-        axios.post(`${window.location.origin}/appointments/add`, newAppointment)
+        axios.post('http://localhost:5000/appointments/add', newAppointment)
             .then(response => {
                 setAppointments([...appointments, response.data]);
                 setNewAppointment({
@@ -36,7 +36,7 @@ const Appointments = () => {
 
     const handleUpdateAppointment = (id, e) => {
         e.preventDefault();
-        axios.put(`${window.location.origin}/appointments/update/${id}`, selectedAppointment)
+        axios.put(`http://localhost:5000/appointments/update/${id}`, selectedAppointment)
             .then(response => {
                 const updatedAppointment = { ...selectedAppointment, _id: id };
                 setAppointments(appointments.map(
@@ -49,7 +49,7 @@ const Appointments = () => {
     };
 
     const handleDeleteAppointment = (id) => {
-        axios.delete(`${window.location.origin}/appointments/delete/${id}`)
+        axios.delete(`http://localhost:5000/appointments/delete/${id}`)
             .then(response => {
                 setAppointments(appointments.filter(appointment => appointment._id !== id));
             })
