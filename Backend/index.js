@@ -10,20 +10,24 @@ import appointmentsRouter from './routes/appointments.js';
 const app = express();
 const PORT = process.env.PORT || 6000;
 
+// Define the allowed origins for CORS
 const allowedOrigins = [
-  'https://hospital-app-taupe.vercel.app/', 
+  'https://hospital-app-taupe.vercel.app',  // Your frontend URL without the trailing slash
 ];
 
+// CORS configuration
 app.use(cors({
   origin: (origin, callback) => {
     if (allowedOrigins.includes(origin) || !origin) {
-      callback(null, true); // Allow the origin
+      callback(null, true);  // Allow the origin
     } else {
-      callback(new Error('Not allowed by CORS')); // Reject the origin
+      callback(new Error('Not allowed by CORS'));  // Reject the origin if it's not allowed
     }
   },
-  methods: ["GET", "POST", "PUT", "DELETE"], // Allow these HTTP methods
-  credentials: true, // Allow cookies and other credentials
+  methods: ["GET", "POST", "PUT", "DELETE"],  // Allow these HTTP methods
+  credentials: true,  // Allow cookies and other credentials
+  preflightContinue: false,  // Handle OPTIONS request before continuing
+  optionsSuccessStatus: 204  // Success status for OPTIONS requests
 }));
 
 // Middleware to parse JSON requests
