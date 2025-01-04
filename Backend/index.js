@@ -11,7 +11,7 @@ const app = express();
 const PORT = process.env.PORT || 6000;
 
 app.use(cors({
-    origin: 'https://hospital-app-api.vercel.app/',
+    origin: 'https://hospital-app-taupe.vercel.app/',
     methods: ["GET", "POST", "PUT", "DELETE"], 
     credentials: true, 
   }))
