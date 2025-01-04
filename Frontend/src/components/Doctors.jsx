@@ -11,7 +11,7 @@ const Doctors = () => {
     useEffect(() => {
         const fetchDoctors = async () => {
             try {
-                const response = await axios.get('http://localhost:5000/doctors');
+                const response = await axios.get('https://hospital-app-api.vercel.app/doctors');
                 setDoctors(response.data);
             } catch (error) {
                 console.error('Error fetching doctors:', error);
@@ -24,7 +24,7 @@ const Doctors = () => {
     const handleAddDoctor = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post('http://localhost:5000/doctors/add', newDoctor);
+            const response = await axios.post('https://hospital-app-api.vercel.app/doctors/add', newDoctor);
             setDoctors((prevDoctors) => [...prevDoctors, response.data]);
             setNewDoctor({ name: '', specialty: '' });
         } catch (error) {
@@ -37,7 +37,7 @@ const Doctors = () => {
         if (!selectedDoctor) return;
 
         try {
-            const response = await axios.put(`http://localhost:5000/doctors/update/${selectedDoctor._id}`, selectedDoctor);
+            const response = await axios.put(`https://hospital-app-api.vercel.app/doctors/update/${selectedDoctor._id}`, selectedDoctor);
             setDoctors((prevDoctors) =>
                 prevDoctors.map((doctor) =>
                     doctor._id === selectedDoctor._id ? response.data : doctor
@@ -52,7 +52,7 @@ const Doctors = () => {
 
     const handleDeleteDoctor = async (id) => {
         try {
-            await axios.delete(`http://localhost:5000/doctors/delete/${id}`);
+            await axios.delete(`https://hospital-app-api.vercel.app/doctors/delete/${id}`);
             setDoctors((prevDoctors) => prevDoctors.filter((doctor) => doctor._id !== id));
         } catch (error) {
             console.error('Error deleting doctor:', error);

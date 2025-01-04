@@ -9,14 +9,14 @@ const Patients = () => {
     const [isEditMode, setIsEditMode] = useState(false);
 
     useEffect(() => {
-        axios.get('http://localhost:5000/patients')
+        axios.get('https://hospital-app-api.vercel.app/patients')
             .then(response => setPatients(response.data))
             .catch(error => console.error('Error fetching patients:', error));
     }, []);
 
     const handleAddPatient = (e) => {
         e.preventDefault();
-        axios.post('http://localhost:5000/patients/add', newPatient)
+        axios.post('https://hospital-app-api.vercel.app/patients/add', newPatient)
             .then(response => {
                 setPatients([...patients, response.data]);
                 setNewPatient({ name: '', age: '', gender: '' });
@@ -26,7 +26,7 @@ const Patients = () => {
 
     const handleUpdatePatient = (id, e) => {
         e.preventDefault();
-        axios.put(`http://localhost:5000/patients/update/${id}`, selectedPatient)
+        axios.put(`https://hospital-app-api.vercel.app/patients/update/${id}`, selectedPatient)
             .then(response => {
                 const updatedPatient = { ...selectedPatient, _id: id };
                 setPatients(patients.map(
@@ -39,7 +39,7 @@ const Patients = () => {
     };
 
     const handleDeletePatient = (id) => {
-        axios.delete(`http://localhost:5000/patients/delete/${id}`)
+        axios.delete(`https://hospital-app-api.vercel.app/patients/delete/${id}`)
             .then(response => {
                 setPatients(patients.filter(patient => patient._id !== id));
             })

@@ -10,8 +10,11 @@ import appointmentsRouter from './routes/appointments.js';
 const app = express();
 const PORT = process.env.PORT || 6000;
 
-app.use(cors());
-
+app.use(cors({
+    origin: 'https://hospital-app-api.vercel.app/',
+    methods: ["GET", "POST", "PUT", "DELETE"], 
+    credentials: true, 
+  }))
 app.use(express.json());
 mongoose.connect(process.env.DB_URL)
     .then(() => {
