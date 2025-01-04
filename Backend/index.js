@@ -27,11 +27,19 @@ app.use(cors({
   methods: ["GET", "POST", "PUT", "DELETE"],  // Allow these HTTP methods
   credentials: true,  // Allow cookies and other credentials
   preflightContinue: false,  // Handle OPTIONS request before continuing
-  optionsSuccessStatus: 204  // Success status for OPTIONS requests
+  optionsSuccessStatus: 204,  // Success status for OPTIONS requests
 }));
 
 // Middleware to parse JSON requests
 app.use(express.json());
+
+// Handle OPTIONS request
+app.options('*', (req, res) => {
+  res.setHeader('Access-Control-Allow-Origin', 'https://hospital-app-taupe.vercel.app');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  res.status(204).end();
+});
 
 // Connect to MongoDB
 mongoose.connect(process.env.DB_URL)
