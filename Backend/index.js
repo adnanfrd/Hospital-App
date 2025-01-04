@@ -17,12 +17,8 @@ app.use(cors({
   }))
 app.use(express.json());
 mongoose.connect(process.env.DB_URL)
-    .then(() => {
-        console.log('MongoDB database connection established successfully');
-    })
-    .catch((err) => {
-        console.error('MongoDB connection error:', err);
-    });
+  .then(() => console.log('Database connected successfully'))
+  .catch((err) => console.error('Database connection failed:', err));
 app.get('/', (req, res) => {
     res.json("hello");
 })
