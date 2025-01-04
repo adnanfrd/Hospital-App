@@ -20,7 +20,9 @@ mongoose.connect(process.env.DB_URL)
     .catch((err) => {
         console.error('MongoDB connection error:', err);
     });
-
+app.get('/', (req, res) => {
+    res.json("hello");
+})
 app.use('/patients', patientsRouter);
 app.use('/doctors', doctorsRouter);
 app.use('/appointments', appointmentsRouter);
