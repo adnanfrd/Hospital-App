@@ -7,16 +7,14 @@ import patientsRouter from './routes/patients.js';
 import doctorsRouter from './routes/doctors.js';
 import appointmentsRouter from './routes/appointments.js';
 
+const DB_URL='mongodb+srv://adnan:adnan%40786A@cluster0.vx12t.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
+
 const app = express();
 const PORT = process.env.PORT || 6000;
 
-app.use(cors({
-    origin: 'https://hospital-app-taupe.vercel.app',
-    methods: ["GET", "POST", "PUT", "DELETE"], 
-    credentials: true, 
-  }))
+app.use(cors())
 app.use(express.json());
-mongoose.connect(process.env.DB_URL)
+mongoose.connect(DB_URL)
   .then(() => console.log('Database connected successfully'))
   .catch((err) => console.error('Database connection failed:', err));
 app.get('/', (req, res) => {
