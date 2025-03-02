@@ -15,14 +15,14 @@ const Appointments = () => {
     const [isEditMode, setIsEditMode] = useState(false);
 
     useEffect(() => {
-        axios.get('https://hospital-app-api.vercel.app/appointments')
+        axios.get('https://event-app-backend.vercel.app/api/user/')
             .then(response => setAppointments(response.data))
             .catch(error => console.error('Error fetching appointments:', error));
     }, []);
 
     const handleAddAppointment = (e) => {
         e.preventDefault();
-        axios.post('https://hospital-app-api.vercel.app/appointments/add', newAppointment)
+        axios.post('https://event-app-backend.vercel.app/api/user/', newAppointment)
             .then(response => {
                 setAppointments([...appointments, response.data]);
                 setNewAppointment({
@@ -36,7 +36,7 @@ const Appointments = () => {
 
     const handleUpdateAppointment = (id, e) => {
         e.preventDefault();
-        axios.put(`https://hospital-app-api.vercel.app/appointments/update/${id}`, selectedAppointment)
+        axios.put(`https://event-app-backend.vercel.app/api/user/${id}`, selectedAppointment)
             .then(response => {
                 const updatedAppointment = { ...selectedAppointment, _id: id };
                 setAppointments(appointments.map(
@@ -49,7 +49,7 @@ const Appointments = () => {
     };
 
     const handleDeleteAppointment = (id) => {
-        axios.delete(`https://hospital-app-api.vercel.app/appointments/delete/${id}`)
+        axios.delete(`https://event-app-backend.vercel.app/api/user/${id}`)
             .then(response => {
                 setAppointments(appointments.filter(appointment => appointment._id !== id));
             })
